@@ -6,6 +6,7 @@
 npm install express-generator@4.9.0
 e:\Users\Santi\Documents\Proyectos\GitHub>node_modules\.bin\express.cmd  --ejs quiz1
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1> npm install
+E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm start
 
 
 3.- Además se deben añadir los siguientes cambios a Quiz:
