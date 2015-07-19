@@ -11,3 +11,7 @@ exports.question= function (req,res ) {
 	 res.render ('quizes/answer', {respuesta: 'Incorrecto'});
 	 }
 };
+
+exports.author= function (req,res ) {
+ res.render('author', {author : 'santin74'});
+ };

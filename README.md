@@ -16,7 +16,8 @@ E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm start
 2) Modificar el servidor Quiz para que sirva una nueva página con los datos de los autores de la práctica. Este desarrollo se realizará en una rama llamada créditos.
 	a)Cree la rama creditos y
 	b)cámbiese a ella para hacer el desarrollo pedido en este apartado.
-	c)Crear un nuevo enlace en la barra de navegación que apunte a la página de créditos. La ruta de acceso a esta página debe ser /author.
+	c)Crear un nuevo enlace
+		   * en la barra de navegación que apunte a la página de créditos. La ruta de acceso a esta página debe ser /author.
 
   d) Modifique el router (routers/index.js) para que atienda las peticiones "GET /author" y sirva una nueva vista views/author.ejs con los datos de los autores o autor de la página, mostrando el nombre de los autores, su fotografía y un pequeño video (opcional) de 30 seg.
 
