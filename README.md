@@ -1,5 +1,6 @@
 
 1.- Crear un repositorio en Github donde subir el proyecto que se les pide desarrollar en los siguientes apartados de esta práctica.
+<<<<<<< HEAD
 	Creo
 	https://github.com/santin74/Quiz
 	(por alguna mal función después de instalar heroku toolbelt, no puedo publicar mis commits aquí, obteniendo siempre error! p.e.:
@@ -14,6 +15,22 @@
 	E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm start
 	Se aprecia el fuente en
 	https://github.com/santin74/quiz1
+=======
+Creo
+https://github.com/santin74/Quiz
+(por alguna mal función después de instalar heroku toolbelt, no puedo publicar mis commits aquí, obteniendo siempre error! p.e.:
+https://github.com/santin74/Quiz/commit/bc5079215a1d9f4054d57555b4dafd75b471afa1
+Más adelante, añadiré un nuevo git remote origin sobre quiz1
+)
+2.- El proyecto debe rehacer  el servidor Quiz desde cero, repitiendo los mismos pasos descritos en las transparencias de clase. No se permite clonar el repositorio oficial de la asignatura que aloja el servidor Quiz. Debe repetirse el desarrollo desde cero.
+
+npm install express-generator@4.9.0
+e:\Users\Santi\Documents\Proyectos\GitHub>node_modules\.bin\express.cmd  --ejs quiz1
+E:\Users\Santi\Documents\Proyectos\GitHub\quiz1> npm install
+E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm start
+Se aprecia el fuente en
+https://github.com/santin74/quiz1
+>>>>>>> origin/master
 
 3.- Además se deben añadir los siguientes cambios a Quiz:
 
@@ -61,7 +78,11 @@ v0.12.5
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm --version
 2.11.2
 
+<<<<<<< HEAD
 * añadimos Procfile y subimos al repositorio de heroku   : git status
+=======
+* añadimos Procfile y subimos al repositorio de heroku
+>>>>>>> origin/master
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -198,5 +219,8 @@ http://quiz-san-2015.herokuapp.com
 2) El URL al proyecto en GITHUB como un enlace clicable.
 https://github.com/santin74/quiz1
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
