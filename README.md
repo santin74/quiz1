@@ -1,13 +1,19 @@
 
 1.- Crear un repositorio en Github donde subir el proyecto que se les pide desarrollar en los siguientes apartados de esta práctica.
-
+Creo
+https://github.com/santin74/Quiz
+(por alguna mal función después de instalar heroku toolbelt, no puedo publicar mis commits aquí, obteniendo siempre error! p.e.:
+https://github.com/santin74/Quiz/commit/bc5079215a1d9f4054d57555b4dafd75b471afa1
+Más adelante, añadiré un nuevo git remote origin sobre quiz1
+)
 2.- El proyecto debe rehacer  el servidor Quiz desde cero, repitiendo los mismos pasos descritos en las transparencias de clase. No se permite clonar el repositorio oficial de la asignatura que aloja el servidor Quiz. Debe repetirse el desarrollo desde cero.
 
 npm install express-generator@4.9.0
 e:\Users\Santi\Documents\Proyectos\GitHub>node_modules\.bin\express.cmd  --ejs quiz1
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1> npm install
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm start
-
+Se aprecia el fuente en
+https://github.com/santin74/quiz1
 
 3.- Además se deben añadir los siguientes cambios a Quiz:
 
@@ -45,11 +51,136 @@ ess-mountain-9742.git
 Git remote heroku added
 
 Se deben seguir los mismos pasos explicados en las transparencias para realizar el despliegue.
+* obtenemos  versiones para actualizar package.json
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>node --version
 v0.12.5
 
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm --version
 2.11.2
+
+* añadimos Procfile y subimos al repositorio de heroku
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   Procfile
+        modified:   README.md
+        modified:   package.json
+E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>git push heroku master
+Counting objects: 72, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (64/64), done.
+Writing objects: 100% (72/72), 11.12 KiB | 0 bytes/s, done.
+Total 72 (delta 22), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Node.js app detected
+remote:
+remote: -----> Creating runtime environment
+remote:
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NPM_CONFIG_PRODUCTION=true
+remote:        NODE_MODULES_CACHE=true
+remote:
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  0.12.5
+remote:        engines.npm (package.json):   2.11.2
+remote:
+remote:        Downloading and installing node 0.12.5...
+remote:        npm 2.11.2 already installed with node
+remote:
+remote: -----> Restoring cache
+remote:        Loading 1 from cacheDirectories (default):
+remote:        - node_modules (not cached - skipping)
+remote:
+remote: -----> Building dependencies
+remote:        Pruning any extraneous modules
+remote:        Installing node modules (package.json)
+remote:        debug@2.0.0 node_modules/debug
+remote:        └── ms@0.6.2
+remote:
+remote:        cookie-parser@1.3.5 node_modules/cookie-parser
+remote:        ├── cookie@0.1.3
+remote:        └── cookie-signature@1.0.6
+remote:
+remote:        express-partials@0.3.0 node_modules/express-partials
+remote:
+remote:        ejs@0.8.8 node_modules/ejs
+remote:
+remote:        morgan@1.3.2 node_modules/morgan
+remote:        ├── basic-auth@1.0.0
+remote:        ├── depd@0.4.5
+remote:        └── on-finished@2.1.0 (ee-first@1.0.5)
+remote:
+remote:        serve-favicon@2.1.7 node_modules/serve-favicon
+remote:        ├── ms@0.6.2
+remote:        ├── fresh@0.2.4
+remote:        └── etag@1.5.1 (crc@3.2.1)
+remote:
+remote:        express@4.9.8 node_modules/express
+remote:        ├── fresh@0.2.4
+remote:        ├── merge-descriptors@0.0.2
+remote:        ├── media-typer@0.3.0
+remote:        ├── utils-merge@1.0.0
+remote:        ├── cookie@0.1.2
+remote:        ├── range-parser@1.0.2
+remote:        ├── escape-html@1.0.1
+remote:        ├── vary@1.0.1
+remote:        ├── cookie-signature@1.0.5
+remote:        ├── finalhandler@0.2.0
+remote:        ├── methods@1.1.0
+remote:        ├── parseurl@1.3.0
+remote:        ├── serve-static@1.6.5
+remote:        ├── path-to-regexp@0.1.3
+remote:        ├── depd@0.4.5
+remote:        ├── qs@2.2.4
+remote:        ├── on-finished@2.1.1 (ee-first@1.1.0)
+remote:        ├── etag@1.4.0 (crc@3.0.0)
+remote:        ├── proxy-addr@1.0.8 (forwarded@0.1.0, ipaddr.js@1.0.1)
+remote:        ├── send@0.9.3 (ms@0.6.2, destroy@1.0.3, on-finished@2.1.0, mime@
+1.2.11)
+remote:        ├── type-is@1.5.7 (mime-types@2.0.14)
+remote:        └── accepts@1.1.4 (negotiator@0.4.9, mime-types@2.0.14)
+remote:
+remote:        body-parser@1.8.4 node_modules/body-parser
+remote:        ├── bytes@1.0.0
+remote:        ├── media-typer@0.3.0
+remote:        ├── raw-body@1.3.0
+remote:        ├── depd@0.4.5
+remote:        ├── on-finished@2.1.0 (ee-first@1.0.5)
+remote:        ├── qs@2.2.4
+remote:        ├── iconv-lite@0.4.4
+remote:        └── type-is@1.5.7 (mime-types@2.0.14)
+remote:
+remote: -----> Caching build
+remote:        Clearing previous node cache
+remote:        Saving 1 cacheDirectories (default):
+remote:        - node_modules
+remote:
+remote: -----> Build succeeded!
+remote:        ├── body-parser@1.8.4
+remote:        ├── cookie-parser@1.3.5
+remote:        ├── debug@2.0.0
+remote:        ├── ejs@0.8.8
+remote:        ├── express@4.9.8
+remote:        ├── express-partials@0.3.0
+remote:        ├── morgan@1.3.2
+remote:        └── serve-favicon@2.1.7
+remote:
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing... done, 9.9MB
+remote: -----> Launching... done, v3
+remote:        https://quiz-san-2015.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy.... done.
+
+Warning: Your console font probably doesn't support Unicode. If you experience s
+trange characters in the output, consider switching to a TrueType font such as L
+ucida Console!
+To https://git.heroku.com/quiz-san-2015.git
+ * [new branch]      master -> master
 
 6.-Actualice GitHub con los cambios realizados en este apartado.
 
@@ -58,21 +189,7 @@ El proyecto desarrollado en esta practica, junto con todas las modificaciones a�
 Entregar en el texto de la entrega a MiriadaX
 
 1) El URL al despliegue en Heroku como un enlace clicable.
+http://quiz-san-2015.herokuapp.com
 2) El URL al proyecto en GITHUB como un enlace clicable.
-
-
-
--------------------------------------------------
-mod 5
-Hacerse una cuenta en GITHUB con el nombre del participante.
-
-Clonar el proyecto "random" del proyecto https://github.com/jquemada/random GITHUB.
-
-Añadir al proyecto un tercer commit con los ficheros
-	README.md (con una breve descripción) y
-	LICENSE.md (con la licencia con que se distribuye -> adaptar una de otro proyecto en GITHUB que le parezca adecuada para distribuir su proyecto).
-
-Subir a continuación el proyecto actualizado actualizado con el nuevo commit a su cuenta en GITHUB.
-
-Entregar en el texto de la entrega a MiriadaX  el URL al proyecto subido a GITHUB como un enlace clicable.
+https://github.com/santin74/quiz1
 
