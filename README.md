@@ -1,19 +1,19 @@
 
 1.- Crear un repositorio en Github donde subir el proyecto que se les pide desarrollar en los siguientes apartados de esta práctica.
-Creo
-https://github.com/santin74/Quiz
-(por alguna mal función después de instalar heroku toolbelt, no puedo publicar mis commits aquí, obteniendo siempre error! p.e.:
-https://github.com/santin74/Quiz/commit/bc5079215a1d9f4054d57555b4dafd75b471afa1
-Más adelante, añadiré un nuevo git remote origin sobre quiz1
-)
+	Creo
+	https://github.com/santin74/Quiz
+	(por alguna mal función después de instalar heroku toolbelt, no puedo publicar mis commits aquí, obteniendo siempre error! p.e.:
+	https://github.com/santin74/Quiz/commit/bc5079215a1d9f4054d57555b4dafd75b471afa1
+	Más adelante, añadiré un nuevo git remote origin sobre quiz1
+	)
 2.- El proyecto debe rehacer  el servidor Quiz desde cero, repitiendo los mismos pasos descritos en las transparencias de clase. No se permite clonar el repositorio oficial de la asignatura que aloja el servidor Quiz. Debe repetirse el desarrollo desde cero.
 
-npm install express-generator@4.9.0
-e:\Users\Santi\Documents\Proyectos\GitHub>node_modules\.bin\express.cmd  --ejs quiz1
-E:\Users\Santi\Documents\Proyectos\GitHub\quiz1> npm install
-E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm start
-Se aprecia el fuente en
-https://github.com/santin74/quiz1
+	npm install express-generator@4.9.0
+	e:\Users\Santi\Documents\Proyectos\GitHub>node_modules\.bin\express.cmd  --ejs quiz1
+	E:\Users\Santi\Documents\Proyectos\GitHub\quiz1> npm install
+	E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm start
+	Se aprecia el fuente en
+	https://github.com/santin74/quiz1
 
 3.- Además se deben añadir los siguientes cambios a Quiz:
 
@@ -42,13 +42,16 @@ Fast-forward
  views/layout.ejs               | 7 +++++--
  5 files changed, 19 insertions(+), 4 deletions(-)
  create mode 100644 views/author.ejs
+	* git push
 
 5.- Una vez realizados y probados estos cambios, debe crearse una cuenta en heroku para desplegar allí el servidor desarrollado en esta práctica.
-    E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>heroku create
-Creating fathomless-mountain-9742... done, stack is cedar-14
-https://fathomless-mountain-9742.herokuapp.com/ | https://git.heroku.com/fathoml
-ess-mountain-9742.git
-Git remote heroku added
+	*    E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>heroku create
+	Creating fathomless-mountain-9742... done, stack is cedar-14
+	https://fathomless-mountain-9742.herokuapp.com/ | https://git.heroku.com/fathomless-mountain-9742.git
+	Git remote heroku added
+
+	* Renombro
+	*    	    E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>heroku apps:rename quiz-san-2015
 
 Se deben seguir los mismos pasos explicados en las transparencias para realizar el despliegue.
 * obtenemos  versiones para actualizar package.json
@@ -58,7 +61,7 @@ v0.12.5
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm --version
 2.11.2
 
-* añadimos Procfile y subimos al repositorio de heroku
+* añadimos Procfile y subimos al repositorio de heroku   : git status
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -183,8 +186,10 @@ To https://git.heroku.com/quiz-san-2015.git
  * [new branch]      master -> master
 
 6.-Actualice GitHub con los cambios realizados en este apartado.
+	* Aquí tengo problemas encontrando siempre error 404 al intentar Sincronizar/publicar e ir al commit en Github.
 
 El proyecto desarrollado en esta practica, junto con todas las modificaciones añadidas, debe subirse al repositorio creado en Github por los alumnos.
+	* Creo un nuevo repositorio (quiz1) para poder continuar avanzando.
 
 Entregar en el texto de la entrega a MiriadaX
 
@@ -192,4 +197,6 @@ Entregar en el texto de la entrega a MiriadaX
 http://quiz-san-2015.herokuapp.com
 2) El URL al proyecto en GITHUB como un enlace clicable.
 https://github.com/santin74/quiz1
+
+
 
