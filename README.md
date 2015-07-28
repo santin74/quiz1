@@ -78,11 +78,9 @@ v0.12.5
 E:\Users\Santi\Documents\Proyectos\GitHub\quiz1>npm --version
 2.11.2
 
-<<<<<<< HEAD
-* añadimos Procfile y subimos al repositorio de heroku   : git status
-=======
+<
 * añadimos Procfile y subimos al repositorio de heroku
->>>>>>> origin/master
+git status
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
@@ -219,8 +217,3 @@ http://quiz-san-2015.herokuapp.com
 2) El URL al proyecto en GITHUB como un enlace clicable.
 https://github.com/santin74/quiz1
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
