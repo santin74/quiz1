@@ -59,10 +59,10 @@ Y sin embargo:
  web.1  | ←[0mGET /quizes?search=Col%C3%B3n ←[32m200 ←[0m8.151 ms - 1073
 */
 	var t=q.parse('0='+req.query.search)[0] ; // aprovechar querystring para el parseo.
-	console.log(req.query);
+
 	console.log('buscando : ' + t);    //
 	var search = '%' + t.replace(/ +/,'%') + '%';   // añadir comodines
-  models.Quiz.findAll(t?{where: ["pregunta like ?", search]}: '').then(function(quizes){
+  models.Quiz.findAll(t!=='undefined'?{where: ["pregunta like ?", search]}: '').then(function(quizes){
 	  res.render('quizes/index.ejs', { quizes: quizes });
 	})
  };
