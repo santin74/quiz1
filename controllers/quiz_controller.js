@@ -22,7 +22,8 @@ exports.load = function (req,res,next, quizId) {
 
 exports.show = function (req, res ) {
 //models.Quiz.find(req.params.quizId).then(function(quiz) {
-  res.render('quizes/show', {quiz: req.quiz});
+  res.render('quizes/show', {quiz: req.quiz ,
+						errors:[]});
 //  })
 };
 
@@ -36,18 +37,19 @@ exports.show = function (req, res ) {
 */
      resultado='Correcto';
 		 }
-		 res.render ('quizes/answer', {quiz: req.quiz, respuesta: resultado});
+		 res.render ('quizes/answer', {quiz: req.quiz, respuesta: resultado ,
+						errors:[]});
 
 //	})
 };
 
 exports.author= function (req,res ) {
- res.render('author', {author : 'santin74'});
+ res.render('author', {author : 'santin74', errors: []});
  };
 
 
 exports.busqueda = function (req,res ) {
- res.render('busqueda' );
+ res.render('busqueda', { errors: []} );
  };
 
 exports.index  =function (req,res ) {
@@ -63,7 +65,82 @@ Y sin embargo:
 	console.log('buscando : ' + t);    //
 	var search = '%' + t.replace(/ +/,'%') + '%';   // añadir comodines
   models.Quiz.findAll(t!=='undefined'?{where: ["pregunta like ?", search]}: '').then(function(quizes){
-	  res.render('quizes/index.ejs', { quizes: quizes });
+	  res.render('quizes/index.ejs', { quizes: quizes, errors : [] });
 	})
- };
+};
 
+exports.destroy = function (  req, res ) {
+	req.quiz.destroy().then( function() {
+		res.redirect('/quizes');
+		}).catch(function(error) { next(error)});
+};
+
+exports.edit = function (req, res) {
+	var quiz = req.quiz;
+	res.render ('quizes/edit', {quiz: quiz, errors: []});
+};
+
+
+exports.update = function (req, res) {
+	req.quiz.pregunta = req.body.quiz.pregunta;
+	req.quiz.respuesta = req.body.quiz.respuesta;
+
+	req.quiz.validate()
+	.then (
+		function(err){
+			if (err)  {
+				res.render ('quizes/edit', {quiz: req.quiz, errors: err.errors});
+				}
+			else {
+				req.quiz.save({fields: ["pregunta", "respuesta"]})
+				.then ( function () { res.redirect('/quizes');});
+			 } // redirect http a lista preguntas
+		 }
+	);
+};
+
+exports.create = function (req, res) {
+	var quiz = models.Quiz.build( req.body.quiz );
+			console.log (req.body.quiz.pregunta);
+      console.log (quiz.respuesta);
+
+	quiz.validate()
+	.then(
+		function(err) {
+			if (err) {
+				res.render('quizes/new', {quiz: quiz, errors: err.errors});
+			} else {
+				console.log('aqui');
+				quiz.save({fields: ["pregunta", "respuesta"]})
+				.then ( function(){ res.redirect('/quizes')})
+			}
+		 }
+	);
+};
+
+/*
+// SOlución de J.Ignacio Gil
+exports.create = function(req, res){
+var quiz = models.Quiz.build( req.body.quiz );
+
+var errors = quiz.validate();//ya qe el objeto errors no tiene then(
+if (errors)
+{
+var i=0; var errores=new Array();//se convierte en [] con la propiedad message por compatibilida con layout
+for (var prop in errors) errores[i++]={message: errors[prop]};
+res.render('quizes/new', {quiz: quiz, errors: errores});
+} else {
+quiz // save: guarda en DB campos pregunta y respuesta de quiz
+.save({fields: ["pregunta", "respuesta"]})
+.then( function(){ res.redirect('/quizes')}) ;
+}
+};
+*/
+
+exports.new = function (req, res) {
+	var quiz = models.Quiz.build(
+		 {pregunta: "Pregunta", respuesta: "Respuesta"}
+		);
+
+	res.render ( 'quizes/new',  {quiz: quiz, errors: []});
+};
