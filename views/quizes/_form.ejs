@@ -1,6 +1,27 @@
 <label for="preg" class="rem">Pregunta: </label>
 <input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> <p>
 <label for="resp" class="rem">Respuesta: </label>
-<input type="text" id="preg" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<label for="tema" class="rem">Temática: </label>
+
+<select name="quiz[tematica]"  >
+<%
+// nos servirá para decidir si mostramos (Selected) cierto elem. de la tematica 
+var selected='';
+// Lo ideal sería traerlo de una tabla de tematica de bd
+var tematica= {
+  "otros" : "Otros" ,
+  "humanidades" : "Humanidades",
+  "ocio" : "Ocio",
+  "ciencia" : "Ciencia",
+  "tecnologia": "Tecnología"
+  };
+
+for (var i in tematica) {
+  // si vamos a renderizar la temática que ya tenía el registro, mostrarlo como selected
+  if (i=== quiz.tematica) selected='selected'; else selected='';
+%>
+  <option value="<%= i %>" <%= selected %> ><%= tematica[i] %></option>
+<% } %>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">
