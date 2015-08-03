@@ -78,3 +78,5 @@ $RECYCLE.BIN/
 .env
 quiz.sqlite
 npm-debug.log
+f.bat 
+launch.json

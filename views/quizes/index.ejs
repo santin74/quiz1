@@ -1,6 +1,25 @@
 <table>
-<% var i ; for (i=0; i<quizes.length; i++) { %>
+<% 
+	var i ;
+	var oldtema=''; 
+	// Lo ideal sería traerlo de una tabla de tematica de bd
+	var tematica= {
+	  "otros" : "Otros" ,
+	  "humanidades" : "Humanidades",
+	  "ocio" : "Ocio",
+	  "ciencia" : "Ciencia",
+	  "tecnologia": "Tecnología"
+	  };
+	
+	for (i=0; i<quizes.length; i++) { %>
 <tr>
+<% 	if (oldtema!== quizes[i].tematica) { %>
+  <tr><th><%= tematica[quizes[i].tematica] %></th></tr>
+<% 
+  oldtema= quizes[i].tematica;
+  }
+%>
+
 <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
 <td><a href="quizes/<%= quizes[i].id %>/edit"><button>editar </button></a></td>
 <td>
@@ -9,6 +28,7 @@
 		borrar </button>
 	</form>
 </tr>
+
 <% } %>
 </table>
 </p>

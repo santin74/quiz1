@@ -60,11 +60,14 @@ Por desgracia yo veo '??' en DOS, pero '%C3%B3' en la query-string:
 Y sin embargo:
  web.1  | ←[0mGET /quizes?search=Col%C3%B3n ←[32m200 ←[0m8.151 ms - 1073
 */
-	var t=q.parse('0='+req.query.search)[0] ; // aprovechar querystring para el parseo.
+	var clause={};
+	var t=req.query.search ; 
+    
 
-	console.log('buscando : ' + t);    //
-	var search = '%' + t.replace(/ +/,'%') + '%';   // añadir comodines
-  models.Quiz.findAll(t!=='undefined'?{where: ["pregunta like ?", search]}: '').then(function(quizes){
+	if ( t!== undefined )
+	  clause.where= search =["pregunta like ?",  '%' + t.replace(/ +/,'%') + '%' ] ;   // añadir comodines
+	clause.order= 'tematica Desc';
+  models.Quiz.findAll(clause).then(function(quizes){
 	  res.render('quizes/index.ejs', { quizes: quizes, errors : [] });
 	})
 };
@@ -84,6 +87,7 @@ exports.edit = function (req, res) {
 exports.update = function (req, res) {
 	req.quiz.pregunta = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
+	req.quiz.tematica  = req.body.quiz.tematica;
 
 	req.quiz.validate()
 	.then (
@@ -92,18 +96,19 @@ exports.update = function (req, res) {
 				res.render ('quizes/edit', {quiz: req.quiz, errors: err.errors});
 				}
 			else {
-				req.quiz.save({fields: ["pregunta", "respuesta"]})
+				req.quiz.save({fields: ["pregunta", "respuesta","tematica"]})
 				.then ( function () { res.redirect('/quizes');});
-			 } // redirect http a lista preguntas
+			 } // redirect http a lista preguntas 
 		 }
 	);
 };
 
 exports.create = function (req, res) {
 	var quiz = models.Quiz.build( req.body.quiz );
-			console.log (req.body.quiz.pregunta);
+/*
+	  console.log (req.body.quiz.pregunta);
       console.log (quiz.respuesta);
-
+*/
 	quiz.validate()
 	.then(
 		function(err) {
@@ -111,7 +116,7 @@ exports.create = function (req, res) {
 				res.render('quizes/new', {quiz: quiz, errors: err.errors});
 			} else {
 				console.log('aqui');
-				quiz.save({fields: ["pregunta", "respuesta"]})
+				quiz.save({fields: ["pregunta", "respuesta","tematica"]})
 				.then ( function(){ res.redirect('/quizes')})
 			}
 		 }
@@ -119,7 +124,7 @@ exports.create = function (req, res) {
 };
 
 /*
-// SOlución de J.Ignacio Gil
+// SOlución de David B. para J.Ignacio Gil
 exports.create = function(req, res){
 var quiz = models.Quiz.build( req.body.quiz );
 
@@ -139,7 +144,7 @@ quiz // save: guarda en DB campos pregunta y respuesta de quiz
 
 exports.new = function (req, res) {
 	var quiz = models.Quiz.build(
-		 {pregunta: "Pregunta", respuesta: "Respuesta"}
+		 {pregunta: "Pregunta", respuesta: "Respuesta",tematica: "Tema"}
 		);
 
 	res.render ( 'quizes/new',  {quiz: quiz, errors: []});
