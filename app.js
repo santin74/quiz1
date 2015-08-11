@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var session = require ( 'express-session');
 
 var routes = require('./routes/index');
 //var users = require('./routes/users');
@@ -21,10 +22,22 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser('Quiz 2015'));
+app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
+
+//helpers dinamicos
+app.use(function(req,res,next) {
+	if (!req.path.match(/\/login|\/logout/)) {
+		req.session.redir = req.path;
+
+	}
+	res.locals.session=req.session;
+	next();
+});
+
 app.use('/', routes);
 //app.use('/users', users);
 
