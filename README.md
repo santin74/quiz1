@@ -1,47 +1,42 @@
-modulo 8
+Módulo 9
 
-Explicación de la tarea
+Añadir auto-logout de sesión
 
+Se pide añadir a la gestión de sesiones un mecanismo de autologout, de forma que
+si un usuario está inactivo (sin enviar ninguna solicitud HTTP) más de 2 minutos,
+la sesión se desconecte y deba volver a autenticarse para continuar.
 
-Añadir a cada pregunta un índice temático
-  -Se pide añadir un índice temático a cada pregunta introducida que diga si es una pregunta relativa a Humanidades, Ocio, Ciencia o Tecnología.
+Para implementar esta funcionalidad se recomienda añadir un middleware de
+auto-logout en app.js que guarde en cada transacción la hora del reloj del sistema en
+una variable de la sesión a la que está asociada. El middleware debe comprobar e
+n cada transacción con una sesión activa si la han transcurrido más de 2 minutos desde la
+transacción anterior en dicha sesión, en cuyo caso destruirá la sesión.
 
- - Para implementar esta funcionalidad habrá que  actualizar el modelo, introduciendo este nuevo campo en la tabla "Quiz" de preguntas.
+	* examinando la documentación de express-session, vemos que en esta versión
+	*  puede hacerse asignando cookie.expires (ver en session_controller )
 
-*	Rehacemos bd sqlite para evitar:
+Una vez realizados los cambios, debe guardarse una nueva versión (commit).
 
-	12:00:23 web.1  | Possibly unhandled SequelizeDatabaseError: SQLITE_ERROR: no such column: tematica
+Ampliación opcional: Añadir una página de estadisticas
+ ** NO llevado a cabo **
+Las personas interesadas en practicar más con express y MVC, pueden añadir una p
+ágina de estadisticas. La página de estadisticas estará accesible directamente
+desde la barra de navegación y mostrará las siguientes informaciones extraidas de
+ la base de datos:
 
- * para poder utilizar foreman + vscode debugging, actualizamos Procfile
-web: node --debug ./bin/www
+El número de preguntas
+El número de comentarios totales
+El número medio de comentarios por pregunta
+El número de preguntas sin comentarios
+El número de preguntas con comentarios
+Para implementar esta funcionalidad habra que crear una nueva entrada en el
+interfaz REST de quizes asociada a la ruta
 
-Además habra que que actualizar los controladores
+     GET /quizes/statistics
 
-* create y edit
+Además habra que crear un nuevo controlador que extraiga la información de la
+base de datos y una nueva vista que la presente.
 
- y las vistas afectados por este cambio.
-*new
-*edit
-*index
-Se recomienda utilizar el elemento <select> de HTML en los formularios de creación y edición para enviar parámetros de una lista preseleccionada:
+Una vez realizado habra que guardar esta funcionalidad en una nueva versión
+(commit). a continuación se desplegará la rama en heroku y se subirá a GitHub.
 
-<select name="tema">
-  <option value="otro" selected>Otro</option>
-  <option value="humanidades">Humanidades</option>
-  <option value="ocio">Ocio</option>
-  <option value="ciencia">Ciencia</option>
-  <option value="tecnologia">Tecnología</option>
-</select>
-
-* modifico _form.ejs para que marque selected' la temática almacenada en bd si la hay.
-
-Una vez realizada, se deberá guardar una nueva versión (commit) con esta funcionalidad, la cual se desplegará en heroku y se subirá a GitHub.
-
-Entrega en MiriadaX
-Subir un fichero de texto que contenga
-1) el URL donde ha desplegfado su práctica en Heroku,
-https://quiz8-san-2015.herokuapp.com
-
-
-2) y el URL a la página de GitHub que aloja este desarrollo.
-https://github.com/santin74/quiz1/tree/IndiceTema
