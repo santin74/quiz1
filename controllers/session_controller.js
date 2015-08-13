@@ -30,6 +30,9 @@ exports.new = function (req, res) {
 	 }
 
 	 req.session.user = {id:user.id, username:user.username};
+	 var hour = 30000;
+	 req.session.cookie.expires = new Date(Date.now() + hour);
+	 req.session.cookie.maxAge = hour;
 	 res.redirect(req.session.redir.toString()); //redir al path anterior
   });
 
